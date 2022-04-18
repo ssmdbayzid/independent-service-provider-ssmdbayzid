@@ -1,0 +1,23 @@
+[
+  {
+    "_id": "625ca3608f4912a1150b581a",
+    "picture": "images/fortrait 2.jpg",
+    "price": 600,
+    "name": "Fortait Photography",
+    "description": "Portrait photography is a great place to start out as a photographer. Building a great portfolio of quality shotss."
+  },
+  {
+    "_id": "625ca3601e1e9688ee26864d",
+    "picture": "images/product.jpg",
+    "price": 1000,
+    "name": "Product Photography",
+    "description": "Product photography refers to using specific photography techniques to take accurate and attractive photos of your products."
+  },
+  {
+    "_id": "625ca36016fdd9a3510d5d30",
+    "picture": "images/wedding.jpg",
+    "price": 2000,
+    "name": "Wedding Photography",
+    "description": "Many people go their entire lives. nearly everyone hires a photographer for their wedding."
+  }
+]
