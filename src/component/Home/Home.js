@@ -4,6 +4,7 @@ import Services from '../Services/Services';
 import img from '../images/palestine.jpg'
 import socialmedia from '../images/socialmedia2.png'
 import './Home.css'
+import Slider from '../Slider/Slider';
 
 
 const Home = () => {
@@ -20,6 +21,7 @@ const Home = () => {
 
     return (
         <div>
+            <Slider></Slider>
             <div className='w-30'> <hr /> </div>
             <h1>My Services</h1>
             <div className='w-30'> <hr /></div>
