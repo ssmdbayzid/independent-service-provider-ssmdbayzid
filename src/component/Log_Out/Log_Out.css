@@ -8,9 +8,10 @@
   form input{
     padding: 5px;
     font-size: 15px;
+    onblur: bold;
     width: 250px;
+    margin: 10px;
     font-weight: 500;
-    border-radius: 10px;
   }
   .checkbox{
     color: red;

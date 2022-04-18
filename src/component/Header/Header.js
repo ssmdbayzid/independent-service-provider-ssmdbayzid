@@ -12,8 +12,8 @@ const Header = () => {
                 <Link to={'/contact'}>Contact</Link>
                 <Link to={'/blog'}>Blog</Link>
                 <Link to={'/about'}>About</Link>
-                <Link to={'/Log In'}>Log In</Link>
-                <Link to={'/Log Out'}>Log Out</Link>
+                <Link to={'/log-in'}>Log In</Link>
+                <Link to={'/log-out'}>Log Out</Link>
             </Nav>
             </div>
         </div>

@@ -1,12 +1,11 @@
 import React from 'react';
-import './LogIn.css'
-import Form from 'react-bootstrap/Form'
+import './Log_Out.css'
 
-const LogIn = () => {
+const Log_Out = () => {
     return (
         <div>
             <div className="register mt-5">
-                <h2>Log In</h2>
+                <h2>Log Out</h2>
                 <form className="form">
                     <input type="text" placeholder="Your Name " required />  <br></br>
                     <input type="email" placeholder="Your Email " required />  <br></br>
@@ -14,10 +13,10 @@ const LogIn = () => {
                 </form>
                 <input type="checkbox" /><labe> Already  Have An Account</labe>
                 <br />
-                <h4 className="reg-btn">Log In</h4>
+                <h4 className="reg-btn">Register</h4>
             </div>
         </div>
     );
 };
 
-export default LogIn;
+export default Log_Out;
