@@ -44,7 +44,7 @@ const Home = () => {
                 </div>
             </section>
 
-            <footer style={{backgroundColor : 'navy', color: 'white', padding: '20px 10px'}} className=''>
+            <footer style={{backgroundColor : '#F4953C', color: 'white', padding: '20px 10px'}} className=''>
                 <h4>contact with me</h4>
                 <img style={{width: '150px'}} src={socialmedia} alt="" srcset="" />
                 <p></p>

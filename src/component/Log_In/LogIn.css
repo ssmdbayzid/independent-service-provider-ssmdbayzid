@@ -1,4 +1,4 @@
-.register{
+.log-in{
     width: 400px;
     margin: 0 auto;
     background-color: #FCF3CF;
@@ -18,13 +18,12 @@
   .form{
     margin: 20px;
   }
-  .reg-btn{ 
+  .login-btn{ 
     background-color: #F3DA73;
     border-radius: 20px;
     padding: 10px;
-    margin-top: 20px;
   }
-  .reg-btn:hover{
+  .login-btn:hover{
     color: navy;
     background-color: #FBD84D;
   }
