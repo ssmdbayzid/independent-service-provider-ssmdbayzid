@@ -3,7 +3,7 @@ import img from '../images/google signin.png'
 import './LogIn.css'
 import Form from 'react-bootstrap/Form'
 import { Link, useNavigate } from 'react-router-dom';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSendEmailVerification, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
 
@@ -15,9 +15,15 @@ const LogIn = () => {
     const navigate = useNavigate()
     const [
         signInWithEmailAndPassword,
-        user,
-        error,
+        user, error
       ] = useSignInWithEmailAndPassword(auth);
+      const [sendEmailVerification] = useSendEmailVerification(auth);
+
+
+
+
+    //   ========Send Email Verify
+
 
     const handleGoogleSignIn = () =>{
         signInWithGoogle();
@@ -55,7 +61,9 @@ const LogIn = () => {
                         New In Here? <Link className='form-link' to="/register" style={{ color: '#EE831F', fontWeight: '700' }}>Register </Link>
                     </p>
 
-                    <input className="login-btn" type="submit" value="Log In" />
+                    <input onClick={() => {
+                    sendEmailVerification(); 
+                    alert('Sent email');}} className="login-btn" type="submit" value="Log In" />
                 </form>
                 <img onClick={handleGoogleSignIn} className='img-fluid p-3' src={img} alt="" />
             </div>

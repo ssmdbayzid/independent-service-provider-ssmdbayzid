@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link , useNavigate} from 'react-router-dom';
 import './Register.css'
 import auth from '../../firebase.init'
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
 
 
 const Register = () => {
@@ -12,6 +12,10 @@ const Register = () => {
     const [error, setError] = useState('')
     const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth);
     const navigate = useNavigate()
+    const [sendEmailVerification] = useSendEmailVerification(auth)
+
+
+
 
     const handleEmailBlur = e =>{
         setEmail(e.target.value)
@@ -51,11 +55,17 @@ const Register = () => {
                     <input onBlur={handleEmailBlur} type="email" placeholder="Your Email " required />  <br></br>
                     <input onBlur={handlePasswordBlur} type="password" placeholder="Your Password " required />
                     <input onBlur={handleConfirmPasswordBlur} type="password" placeholder="Type Confirm Password " required />
+                    <p>{error?.message}</p>
                     <p>
                     Already  Have An Account? <Link className='form-link' to="/log-in" style={{color: '#EE831F', fontWeight: '700'}}>Log In </Link>
                 </p>
-                <p>{error}</p>
-                    <input className="reg-btn" type="submit" value="Register" />
+                
+                    <input
+                    onClick={async () => {
+                        await sendEmailVerification();
+                        alert('Sent email');}}
+
+                    className="reg-btn" type="submit" value="Register" />
                 </form>
             </div>
         </div>
