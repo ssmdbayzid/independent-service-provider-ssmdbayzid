@@ -15,7 +15,7 @@ const Register = () => {
     const [sendEmailVerification] = useSendEmailVerification(auth)
 
 
-
+    
 
     const handleEmailBlur = e =>{
         setEmail(e.target.value)
@@ -62,9 +62,7 @@ const Register = () => {
                 
                     <input
                     onClick={async () => {
-                        await sendEmailVerification();
-                        alert('Sent email');}}
-
+                        sendEmailVerification();}}
                     className="reg-btn" type="submit" value="Register" />
                 </form>
             </div>
