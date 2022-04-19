@@ -1,8 +1,13 @@
-# Getting Started with Create React App
+# Destinee Photography
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## My Work List
+* I am creating a nav var.
+* I create a slider in this site.
+* I using Bootstrap Frame Work.
+* I using react route in this site.
+* I use firebase for my Authentication.
 
 In the project directory, you can run:
 

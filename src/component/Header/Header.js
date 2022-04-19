@@ -3,8 +3,15 @@ import logo from '../images/logo copy.png'
 import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import  './Header.css'
+import { signOut } from 'firebase/auth';
+import auth from '../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Header = () => {
+    const [user] = useAuthState(auth);
+    const handleSignOut = () =>{
+            signOut(auth)
+    }
     return (
         <div >
             <div className='nav-bar d-flex align-items-center justify-content-center'>
@@ -18,8 +25,13 @@ const Header = () => {
                 <Link to={'/home'}>Home</Link>
                 <Link to={'/contact'}>Contact</Link>
                 <Link to={'/blog'}>Blog</Link>
-                <Link to={'/about'}>About</Link>
-                <Link to={'/log-in'}>Log In</Link>
+                <Link to={'/about'}>About Me</Link>
+                <Link to={'blog'}>Blogs</Link>
+                {
+                    user? <button onClick={handleSignOut}>Sign Out</button>: <Link to={'/log-in'}>Log In</Link>
+
+                }
+                
                 <Link to={'/register'}>Register</Link>
             </Nav>
             </div>
