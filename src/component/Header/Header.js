@@ -23,7 +23,6 @@ const Header = () => {
             </div>
             <Nav>
                 <Link to={'/home'}>Home</Link>
-                <Link to={'/contact'}>Contact</Link>
                 <Link to={'/blog'}>Blog</Link>
                 <Link to={'/about'}>About Me</Link>
                 <Link to={'blog'}>Blogs</Link>
