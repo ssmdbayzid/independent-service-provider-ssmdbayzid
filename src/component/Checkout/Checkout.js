@@ -1,9 +1,12 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 const Checkout = () => {
+    const Id = useParams(id)
+
     return (
         <div>
-            <h1> This is My checkout box</h1>
+            <h1> Service Id: {Id} </h1>
         </div>
     );
 };

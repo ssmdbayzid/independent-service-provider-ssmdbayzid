@@ -31,7 +31,10 @@ const Header = () => {
 
                 }
                 
-                <Link to={'/register'}>Register</Link>
+                {
+                user? '' : <Link to={'/register'}>Register</Link>
+                
+                }
             </Nav>
             </div>
         </div>

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import img from '../images/google signin.png'
 import './LogIn.css'
-import Form from 'react-bootstrap/Form'
-import { Link, useNavigate } from 'react-router-dom';
+// import Form from 'react-bootstrap/Form'
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useSendEmailVerification, useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
@@ -11,17 +11,24 @@ const LogIn = () => {
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [signInWithGoogle] = useSignInWithGoogle(auth);
-    const [sendPasswordResetEmail, sending, error] = useSendPasswordResetEmail(
+    const [signInWithGoogle, user1] = useSignInWithGoogle(auth);
+    const [sendPasswordResetEmail, error] = useSendPasswordResetEmail(
         auth
       );
-    const navigate = useNavigate()
     const [
         signInWithEmailAndPassword,
         user
       ] = useSignInWithEmailAndPassword(auth);
       const [sendEmailVerification] = useSendEmailVerification(auth);
 
+      const navigate = useNavigate()
+      const location = useLocation()
+
+
+      const from = location.state?.from?.pathname || '/home'
+      if(user1 || user){
+        navigate(from, {replace: true});
+    }
 
 
         const resetPassword = () =>{
@@ -33,11 +40,9 @@ const LogIn = () => {
     const handleGoogleSignIn = () =>{
         signInWithGoogle();
     }
-    if(user){
-        navigate('/home')
-        console.log(user)
-    }
 
+
+ 
 
     const handleEmailBlur = e =>{
         setEmail(e.target.value)
