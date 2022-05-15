@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Link , useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Register.css'
 import auth from '../../firebase.init'
-import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 
 const Register = () => {
@@ -12,62 +12,66 @@ const Register = () => {
     const [error, setError] = useState('')
     const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth);
     const navigate = useNavigate()
-    const [sendEmailVerification] = useSendEmailVerification(auth)
+    // const [sendEmailVerification] = useSendEmailVerification(auth)
 
 
-    
 
-    const handleEmailBlur = e =>{
+
+    const handleEmailBlur = e => {
+
         setEmail(e.target.value)
     };
-    const handlePasswordBlur = e =>{
+    const handlePasswordBlur = e => {
+        console.log(e.target.value)
+
         setPassword(e.target.value)
     };
-    const handleConfirmPasswordBlur = e =>{
+    const handleConfirmPasswordBlur = e => {
         setConfirmPassword(e.target.value)
     };
 
-    if(user){
+    if (user){
+        console.log(user)
         navigate('/home')
     }
 
-    const handleCreatUser = e =>{
-        e.preventDefault()
+ 
 
-        if(confirmPassword !== password){
-            setError('Password Do Not Mach')
-            return;
+        const handleCreatUser = e => {
+            e.preventDefault()
+            // sendEmailVerification();
+            if (confirmPassword !== password) {
+                setError('Password Do Not Mach')
+                return;
+            }
+            if (password.length < 6) {
+                setError('Password Must Be 6 Character')
+                return;
+            }
+
+            createUserWithEmailAndPassword(email, password)
+            console.log(email, password)
         }
-        if(password.length < 6){
-            setError('Password Must Be 6 Character')
-            return;
-        }
-
-        createUserWithEmailAndPassword(email, password)
-    }
 
 
-    return (
-        <div>
-            <div className="register mt-5">
-                <h2>Register</h2>
-                <form onSubmit={handleCreatUser} className="form">
-                    <input onBlur={handleEmailBlur} type="email" placeholder="Your Email " required />  <br></br>
-                    <input onBlur={handlePasswordBlur} type="password" placeholder="Your Password " required />
-                    <input onBlur={handleConfirmPasswordBlur} type="password" placeholder="Type Confirm Password " required />
-                    <p>{error?.message}</p>
-                    <p>
-                    Already  Have An Account? <Link className='form-link' to="/log-in" style={{color: '#EE831F', fontWeight: '700'}}>Log In </Link>
-                </p>
-                
-                    <input
-                    onClick={async () => {
-                        sendEmailVerification();}}
-                    className="reg-btn" type="submit" value="Register" />
-                </form>
+        return (
+            <div>
+                <div className="register mt-5">
+                    <h2>Register</h2>
+                    <form onSubmit={handleCreatUser} className="form">
+                        <input onBlur={handleEmailBlur} type="email" placeholder="Your Email " required />  <br></br>
+                        <input onBlur={handlePasswordBlur} type="password" placeholder="Your Password " required />
+                        <input onBlur={handleConfirmPasswordBlur} type="password" placeholder="Type Confirm Password " required />
+                        <p>{error && error.message}</p>
+                        <p>
+                            Already  Have An Account? <Link className='form-link' to="/log-in" style={{ color: '#EE831F', fontWeight: '700' }}>Log In </Link>
+                        </p>
+
+                        <input className="reg-btn" type="submit" value="Register" />
+                    </form>
+                </div>
             </div>
-        </div>
-    );
-};
+        );
+    };
 
-export default Register;
+    export default Register;
