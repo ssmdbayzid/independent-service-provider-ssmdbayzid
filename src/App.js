@@ -7,8 +7,8 @@ import LogIn from './component/LogIn/LogIn';
 import Checkout from './component/Checkout/Checkout';
 import Register from './component/Register/Register';
 import ErrorPage from './component/ErrorPage/ErrorPage';
-import Blogs from './component/Blogs/Blogs';
 import RequireAuth from './component/RequireAuth/RequireAuth';
+import Blogs from './component/Blogs/Blogs';
 
 
 function App() {
@@ -21,13 +21,14 @@ function App() {
         <Route path='/about' element={<About></About>} />
         <Route path='/blog' element={<Blogs></Blogs>} />
         <Route path='/log-in' element={<LogIn></LogIn>} />
-        <Route path='*' element={<ErrorPage></ErrorPage>} />
         <Route path='/register' element={<Register></Register>} />
-        <Route path='/checkout:id' element={
-        <RequireAuth>
+        <Route path='/checkout' element={
+          <RequireAuth>
             <Checkout></Checkout>
-        </RequireAuth>} />
-
+          </RequireAuth>
+        }
+        />
+        <Route path='*' element={<ErrorPage></ErrorPage>} />
       </Routes>
     </div>
   );

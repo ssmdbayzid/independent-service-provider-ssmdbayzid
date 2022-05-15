@@ -15,7 +15,7 @@ const Services = ({service}) => {
                         {description}
                     </Card.Text>
                     <h4 className='p-2'>Rate : ${price}</h4>
-                    <Button href={`/checkout:${service?._id}`} variant="primary">Go somewhere</Button>
+                    <Button href='/checkout' variant="primary">Go somewhere</Button>
                 </Card.Body>
             </Card>
         </div>
